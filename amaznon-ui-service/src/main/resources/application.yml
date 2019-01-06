@@ -1,0 +1,37 @@
+### Spring properties
+# Service registers under this name
+spring:
+  application:
+    name: AMAZON_UI      
+  freemarker:
+    enabled: false     # Ignore Eureka dashboard FreeMarker templates
+  thymeleaf:
+    cache: false
+    check-template: true
+    check-template-location: true
+    content-type: text/html
+    enabled: true
+    encoding: UTF-8
+    prefix: classpath:/templates/
+    suffix: .html
+    # excluded-view-names:
+    # mode: HTML5
+    # template-resolver-order:
+    # view-names:
+
+# Discovery Server Access
+eureka:
+    client:
+      serviceUrl:
+        defaultZone: http://localhost:8080/eureka/
+
+# HTTP Server (Tomcat) Port
+server: 
+  port: 9090
+  context-path: /amazon
+
+# Disable Spring Boot's "Whitelabel" default error page, so we can use our own
+error:
+  whitelabel:
+    enabled: false
+

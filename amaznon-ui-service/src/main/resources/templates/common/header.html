@@ -1,0 +1,23 @@
+<header layout:fragment="header">
+	<table width="100%">
+		<tr>
+			<td width="70%">	
+				<div style="text-align: left">
+					<h1>Guru's Shoppingcart Microservices</h1>
+				</div>
+			</td>
+			
+			<td width="20%">
+				<div style="text-align: right">
+					Hi <span th:text="${session.user.userName}"/> | <a href="/logout" th:href="@{/logout}">Logout</a>
+				</div>	
+				
+			</td>
+			<td width="10%">
+				
+			</td>
+		</tr>
+		
+	</table>
+	
+</header>

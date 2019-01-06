@@ -1,0 +1,61 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="common/header :: header"></head>
+
+<body>
+	<div layout:fragment="content" th:remove="tag">
+		<a href="/getProductsByCatalog" th:href="@{'/getProductsByCatalog/' + ${product.getCatalogId()}}">Catalog Details</a>
+
+		<h2>Product Details</h2>
+		
+		<form method="post" action="#" th:action="@{/updateProductDetails}" th:object="${product}" >
+			<input type="hidden" name="catalogId" th:field="*{catalogId}" th:value="${product.catalogId}" ></input>
+			<input type="hidden" name="productCode" th:field="*{productCode}" th:value="${product.productCode}" ></input>
+			
+			<div th:switch="${recordUpdateFlag}"> 
+			  <p th:case="'true'">Product details has been updated successfully.</p>
+			</div>
+			
+			<table>
+				<tr>
+					<td><label>Product Code:</label></td>
+					<td th:text="${product.productCode}"></td>
+				</tr>
+				<tr>
+					<td><label>Product Description:</label></td>
+					<td><input type="text" th:field="*{productDesc}" /></td>
+				</tr>
+				<tr>
+					<td><label>Product Color:</label></td>
+					<td><input type="text" th:field="*{productColor}" /></td>
+				</tr>
+				<tr>
+					<td><label>Name:</label></td>
+					<td><input type="text" th:field="*{name}" /></td>
+				</tr>
+				<tr>
+					<td><label>Units In Stock:</label></td>
+					<td><input type="text" th:field="*{unitsInStock}" /></td>
+				</tr>
+				<tr>
+					<td><label>Unit Price:</label></td>
+					<td><input type="text" th:field="*{price}" /></td>
+				</tr>
+				<tr>
+					<td><label>Supplier Id:</label></td>
+					<td><input type="text" th:field="*{supplierId}" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><button type="submit">Update</button></td>
+				</tr>
+
+			</table>
+		</form>
+	</div>
+
+	<div th:replace="common/footer :: footer"></div>
+</body>
+</html>
